@@ -1,19 +1,19 @@
 # ─────────────────────────────────────────────────────────────
-#  Deal Journal: site settings
+#  Fairness Opinion: site settings
 #  Fill in the lines marked EDIT. Leave a line commented out (#)
 #  to hide that link on the site.
 # ─────────────────────────────────────────────────────────────
 
-title: Deal Journal
-description: Weekly analysis of M&A, bank mergers and restructurings by Arnav Chopra.
+title: Fairness Opinion
+description: An independent view on every deal. Weekly analysis of M&A, bank mergers and restructurings by Arnav Chopra.
 
 author:
   name: Arnav Chopra
   # EDIT: remove the # at the start of a line once you have the link
-  # linkedin: https://www.linkedin.com/in/your-profile
+  linkedin: https://www.linkedin.com/in/arnavchopra1
   # email: you@example.com
   # resume: /assets/resume.pdf          # upload your PDF to the assets folder
-  # photo: /assets/img/photo.jpg        # upload a square photo to assets/img
+  photo: /assets/img/photo.jpg
 
 # ── You don't need to change anything below this line ──
 
