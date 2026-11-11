@@ -1,0 +1,29 @@
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <span class="caps footer-label">{{ site.author.name }}</span>
+        <a class="footer-title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+      </div>
+      <div>
+        <span class="caps footer-label">Sections</span>
+        <ul class="footer-links">
+          <li><a href="{{ '/' | relative_url }}">All deals</a></li>
+          <li><a href="{{ '/scorecard/' | relative_url }}">Scorecard</a></li>
+          <li><a href="{{ '/about/' | relative_url }}">About</a></li>
+        </ul>
+      </div>
+      {% if site.author.linkedin or site.author.resume or site.author.email %}<div>
+        <span class="caps footer-label">Elsewhere</span>
+        <ul class="footer-links">
+          {% if site.author.linkedin and site.author.linkedin != "" %}<li><a href="{{ site.author.linkedin }}" target="_blank" rel="noopener">LinkedIn ↗</a></li>{% endif %}
+          {% if site.author.resume and site.author.resume != "" %}<li><a href="{{ site.author.resume | relative_url }}" target="_blank" rel="noopener">Resume ↗</a></li>{% endif %}
+          {% if site.author.email and site.author.email != "" %}<li><a href="mailto:{{ site.author.email }}">Email</a></li>{% endif %}
+        </ul>
+      </div>{% endif %}
+    </div>
+    <div class="footer-base">
+      <span>© {{ site.time | date: "%Y" }} {{ site.author.name }}. All views are my own and are not investment advice.</span>
+    </div>
+  </div>
+</footer>
