@@ -1,0 +1,19 @@
+<div class="topbar">
+  <div class="wrap topbar-inner">
+    <span class="caps">Weekly M&amp;A &amp; Restructuring Analysis</span>
+    <span class="caps topbar-right">Est. 2026</span>
+  </div>
+</div>
+<header class="masthead">
+  <div class="wrap">
+    <a class="masthead-link" href="{{ '/' | relative_url }}">
+      <span class="caps masthead-kicker">{{ site.author.name }}</span>
+      <span class="masthead-title">{{ site.title }}</span>
+    </a>
+    <nav class="mainnav" aria-label="Main">
+      <a class="caps{% if page.nav == 'journal' %} active{% endif %}" href="{{ '/' | relative_url }}">Journal</a>
+      <a class="caps{% if page.nav == 'scorecard' %} active{% endif %}" href="{{ '/scorecard/' | relative_url }}">Scorecard</a>
+      <a class="caps{% if page.nav == 'about' %} active{% endif %}" href="{{ '/about/' | relative_url }}">About</a>
+    </nav>
+  </div>
+</header>
