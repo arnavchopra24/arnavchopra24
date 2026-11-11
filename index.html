@@ -1,0 +1,43 @@
+---
+layout: default
+nav: journal
+body_class: home-page
+---
+<section class="wrap hero">
+  <div class="hero-text">
+    <span class="caps kicker">The Journal</span>
+    <h1 class="hero-title">M&amp;A and restructuring, read one deal at a time.</h1>
+    <p class="hero-lede">Weekly write-ups on announced mergers, sponsor take-privates, bank combinations and liability-management exercises: the numbers, the strategic case, the risks, and a verdict that gets revisited as the deal plays out.</p>
+  </div>
+  <aside class="pulse" aria-label="At a glance">
+    <span class="caps kicker">At a glance</span>
+    <dl class="pulse-list">
+      <div><dt>Deals analysed</dt><dd class="num" id="stat-count">0</dd></div>
+      <div><dt>Sectors covered</dt><dd class="num" id="stat-sectors">0</dd></div>
+      <div><dt>Latest analysis</dt><dd class="num" id="stat-latest">—</dd></div>
+    </dl>
+  </aside>
+</section>
+
+<section class="filters" aria-label="Filter deals">
+  <div class="wrap filters-inner">
+    <label class="filter filter-search">
+      <span class="caps filter-label">Search</span>
+      <input type="search" id="f-search" placeholder="Acquirer, target, advisor, sector…" autocomplete="off">
+    </label>
+    <label class="filter"><span class="caps filter-label">Sector</span><select id="f-sector"><option value="">All sectors</option></select></label>
+    <label class="filter"><span class="caps filter-label">Deal type</span><select id="f-type"><option value="">All types</option></select></label>
+    <label class="filter"><span class="caps filter-label">Advisor</span><select id="f-advisor"><option value="">All advisors</option></select></label>
+    <label class="filter"><span class="caps filter-label">Verdict</span><select id="f-verdict"><option value="">All verdicts</option></select></label>
+  </div>
+</section>
+
+<section class="wrap archive" id="archive" data-src="{{ '/deals.json' | relative_url }}">
+  <div class="archive-head">
+    <span class="caps">Archive</span>
+    <span class="caps" id="archive-count"></span>
+  </div>
+  <div class="card-grid" id="card-grid"></div>
+  <div class="empty" id="empty-state" hidden></div>
+  <noscript><p class="empty">Turn on JavaScript to browse the archive.</p></noscript>
+</section>

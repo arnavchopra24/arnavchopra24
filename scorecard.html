@@ -1,0 +1,34 @@
+---
+layout: default
+title: Scorecard
+nav: scorecard
+permalink: /scorecard/
+body_class: scorecard-page
+description: How the Deal Journal's verdicts have held up, reviewed after each deal plays out.
+---
+<section class="wrap page-head">
+  <span class="caps kicker">Scorecard</span>
+  <h1 class="page-title">How the verdicts have aged</h1>
+  <p class="page-lede">Every write-up ends with a verdict. Roughly a year later, or once the deal closes or breaks, I go back and grade it against what actually happened. Verdicts that turned out wrong stay on the record.</p>
+</section>
+
+<section class="wrap scorecard" id="scorecard" data-src="{{ '/deals.json' | relative_url }}">
+  <p class="score-summary num" id="score-summary"></p>
+  <div class="table-wrap">
+    <table class="score-table" id="score-table" hidden>
+      <thead>
+        <tr>
+          <th scope="col">Deal</th>
+          <th scope="col">Written</th>
+          <th scope="col">Original verdict</th>
+          <th scope="col">Verdict today</th>
+          <th scope="col">Reviewed</th>
+        </tr>
+      </thead>
+      <tbody id="score-body"></tbody>
+    </table>
+  </div>
+  <div class="empty" id="score-empty" hidden>
+    <p>No verdicts have been reviewed yet. Each deal is revisited once it closes, breaks, or reaches its first anniversary, and the results will be listed here.</p>
+  </div>
+</section>

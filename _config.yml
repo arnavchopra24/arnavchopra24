@@ -1,0 +1,40 @@
+# ─────────────────────────────────────────────────────────────
+#  Deal Journal: site settings
+#  Fill in the lines marked EDIT. Leave a line commented out (#)
+#  to hide that link on the site.
+# ─────────────────────────────────────────────────────────────
+
+title: Deal Journal
+description: Weekly analysis of M&A, bank mergers and restructurings by Arnav Chopra.
+
+author:
+  name: Arnav Chopra
+  # EDIT: remove the # at the start of a line once you have the link
+  # linkedin: https://www.linkedin.com/in/your-profile
+  # email: you@example.com
+  # resume: /assets/resume.pdf          # upload your PDF to the assets folder
+  # photo: /assets/img/photo.jpg        # upload a square photo to assets/img
+
+# ── You don't need to change anything below this line ──
+
+collections:
+  deals:
+    output: true
+    permalink: /deals/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: deals
+    values:
+      layout: deal
+      body_class: deal-page
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+
+exclude:
+  - README.md
+  - templates
