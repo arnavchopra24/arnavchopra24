@@ -1,0 +1,33 @@
+---
+layout: default
+---
+<script type="application/json" id="deal-data">{% include deal-json.html deal=page %}</script>
+
+<article class="wrap deal">
+  <a class="caps backlink" href="{{ '/' | relative_url }}">← All deals</a>
+
+  <header class="deal-head">
+    <div class="deal-meta caps" id="deal-meta"></div>
+    <h1 class="deal-title">{% if page.acquirer %}{{ page.acquirer }} <span class="arrow">→</span> {{ page.target }}{% else %}{{ page.title }}{% endif %}</h1>
+    {% if page.subtitle %}<p class="deal-subtitle">{{ page.subtitle }}</p>{% endif %}
+    <div class="deal-tags" id="deal-tags"></div>
+  </header>
+
+  <div class="deal-grid">
+    <aside class="numbers" aria-label="Key figures">
+      <div class="numbers-inner">
+        <span class="caps numbers-label">The numbers</span>
+        <dl id="numbers-list"></dl>
+      </div>
+    </aside>
+
+    <div class="deal-main">
+      <div class="deal-body" id="deal-body">
+{{ content }}
+      </div>
+      <div id="deal-extras"></div>
+      <p class="deal-sign">Analysis and views by {{ site.author.name }}. Not investment advice.</p>
+      <a class="caps backlink backlink-bottom" href="{{ '/' | relative_url }}">← Back to the archive</a>
+    </div>
+  </div>
+</article>
