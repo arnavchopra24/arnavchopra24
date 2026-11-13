@@ -1,19 +1,20 @@
 <div class="topbar">
   <div class="wrap topbar-inner">
-    <span class="caps">Weekly M&amp;A &amp; Restructuring Analysis</span>
-    <span class="caps topbar-right">Est. 2026</span>
+    <span class="topbar-date" id="today"></span>
+    <span class="topbar-tag">Weekly M&amp;A &amp; Restructuring Analysis</span>
+    {% if site.author.linkedin %}<a class="topbar-link" href="{{ site.author.linkedin }}" target="_blank" rel="noopener">LinkedIn ↗</a>{% else %}<span></span>{% endif %}
   </div>
 </div>
 <header class="masthead">
   <div class="wrap">
-    <a class="masthead-link" href="{{ '/' | relative_url }}">
-      <span class="caps masthead-kicker">{{ site.author.name }}</span>
-      <span class="masthead-title">{{ site.title }}</span>
-    </a>
-    <nav class="mainnav" aria-label="Main">
-      <a class="caps{% if page.nav == 'journal' %} active{% endif %}" href="{{ '/' | relative_url }}">Journal</a>
-      <a class="caps{% if page.nav == 'scorecard' %} active{% endif %}" href="{{ '/scorecard/' | relative_url }}">Scorecard</a>
-      <a class="caps{% if page.nav == 'about' %} active{% endif %}" href="{{ '/about/' | relative_url }}">About</a>
-    </nav>
+    <a class="masthead-link" href="{{ '/' | relative_url }}"><span class="masthead-title">{{ site.title }}</span></a>
+    <span class="masthead-by">An independent view on every deal · By {{ site.author.name }}</span>
   </div>
+  <nav class="mainnav" aria-label="Main">
+    <a class="{% if page.nav == 'journal' %}active{% endif %}" href="{{ '/' | relative_url }}">Latest</a>
+    <a href="{{ '/' | relative_url }}?type=Strategic%20M%26A#archive">M&amp;A</a>
+    <a href="{{ '/' | relative_url }}?type=Bank%20merger#archive">Bank Deals</a>
+    <a class="{% if page.nav == 'scorecard' %}active{% endif %}" href="{{ '/scorecard/' | relative_url }}">Scorecard</a>
+    <a class="{% if page.nav == 'about' %}active{% endif %}" href="{{ '/about/' | relative_url }}">About</a>
+  </nav>
 </header>
