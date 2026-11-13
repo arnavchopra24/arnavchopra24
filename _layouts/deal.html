@@ -2,32 +2,36 @@
 layout: default
 ---
 <script type="application/json" id="deal-data">{% include deal-json.html deal=page %}</script>
+<div class="progress" aria-hidden="true"><span id="progress-bar"></span></div>
 
-<article class="wrap deal">
-  <a class="caps backlink" href="{{ '/' | relative_url }}">← All deals</a>
-
-  <header class="deal-head">
-    <div class="deal-meta caps" id="deal-meta"></div>
-    <h1 class="deal-title">{% if page.acquirer %}{{ page.acquirer }} <span class="arrow">→</span> {{ page.target }}{% else %}{{ page.title }}{% endif %}</h1>
-    {% if page.subtitle %}<p class="deal-subtitle">{{ page.subtitle }}</p>{% endif %}
-    <div class="deal-tags" id="deal-tags"></div>
+<article class="deal">
+  <header class="art-head">
+    <div class="art-kicker"><a href="{{ '/' | relative_url }}">{{ page.kicker | default: page.sector | default: 'Analysis' }}</a><span class="art-type" id="deal-type">{{ page.deal_type }}</span></div>
+    <h1 class="art-headline">{% if page.headline %}{{ page.headline }}{% elsif page.acquirer %}{{ page.acquirer }} <span class="arrow">→</span> {{ page.target }}{% else %}{{ page.title }}{% endif %}</h1>
+    {% if page.subtitle %}<p class="art-dek">{{ page.subtitle }}</p>{% endif %}
+    <div class="art-dealline" id="deal-meta"></div>
+    <div class="byline">
+      {% if site.author.photo %}<img class="byline-photo" src="{{ site.author.photo | relative_url }}" alt="" width="44" height="44">{% endif %}
+      <div class="byline-text">
+        <span class="byline-name">By <a href="{{ '/about/' | relative_url }}">{{ site.author.name }}</a></span>
+        <span class="byline-meta"><time datetime="{{ page.written | date: '%Y-%m-%d' }}">{{ page.written | date: "%B %-d, %Y" }}</time><span class="dot">·</span><span id="read-time"></span><span id="deal-verdict"></span></span>
+      </div>
+      <div class="share" aria-label="Share">
+        <a class="share-btn" id="share-linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url | url_encode }}" target="_blank" rel="noopener">Share on LinkedIn</a>
+        <button class="share-btn" type="button" id="share-copy">Copy link</button>
+      </div>
+    </div>
   </header>
 
-  <div class="deal-grid">
-    <aside class="numbers" aria-label="Key figures">
-      <div class="numbers-inner">
-        <span class="caps numbers-label">The numbers</span>
-        <dl id="numbers-list"></dl>
-      </div>
-    </aside>
+  {% if page.hero_graphic %}<div class="art-hero">{% include graphic.html g=page.hero_graphic %}</div>{% endif %}
 
-    <div class="deal-main">
-      <div class="deal-body" id="deal-body">
+  {% if page.glance %}<section class="glance" aria-label="Deal at a glance">{% for s in page.glance %}<div class="glance-item"><span class="glance-value num">{{ s.value }}</span><span class="glance-label">{{ s.label }}</span></div>{% endfor %}</section>{% endif %}
+
+  {% if page.key_points %}<aside class="keypoints"><span class="keypoints-label">In 30 seconds</span><ul>{% for k in page.key_points %}<li>{{ k }}</li>{% endfor %}</ul></aside>{% endif %}
+
+  <div class="deal-body" id="deal-body">
 {{ content }}
-      </div>
-      <div id="deal-extras"></div>
-      <p class="deal-sign">Analysis and views by {{ site.author.name }}. Not investment advice.</p>
-      <a class="caps backlink backlink-bottom" href="{{ '/' | relative_url }}">← Back to the archive</a>
-    </div>
   </div>
+  <div class="deal-extras" id="deal-extras"></div>
+  <p class="deal-sign">Analysis and views by {{ site.author.name }}. Not investment advice. Figures are from the sources listed above; any estimate of my own is labelled as one.</p>
 </article>
