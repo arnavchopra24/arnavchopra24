@@ -498,7 +498,7 @@ input[type=range]:focus-visible::-webkit-slider-thumb { box-shadow: 0 0 0 4px rg
   .wrap { padding-left: 18px; padding-right: 18px; }
   .topbar-inner { grid-template-columns: 1fr auto; }
   .topbar-tag { display: none; }
-  .masthead-title { font-size: 44px; }
+  .masthead-title { font-size: 36px; }
   .masthead-by { font-size: 11px; }
   .mainnav { gap: 4px 18px; font-size: 12.5px; }
   .lead-title { font-size: 34px; }
