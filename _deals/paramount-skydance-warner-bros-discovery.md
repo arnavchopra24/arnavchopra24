@@ -7,6 +7,7 @@ headline: "Seven Bids and $87 Billion of Debt: How Paramount Won Warner Bros."
 subtitle: "Paramount Skydance raised its offer from $19 to $31 a share and pried Warner Bros. Discovery away from Netflix. Warner shareholders got a 147% premium. Skydance shareholders got the bill."
 kicker: "Media & Entertainment"
 short: "Paramount / Warner Bros."
+featured: true
 image: "/assets/img/deals/paramount-wbd-card.png"
 
 announced: 2026-02-27
