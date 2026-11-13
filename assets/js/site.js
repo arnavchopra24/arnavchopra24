@@ -188,7 +188,7 @@
           if (f.verdict.value && d.verdict !== f.verdict.value) return false;
           if (f.advisor.value && advisors(d).indexOf(f.advisor.value) === -1) return false;
           if (term) {
-            var hay = [d.acquirer, d.target, d.title, d.subtitle, d.sector, d.deal_type, d.sponsor]
+            var hay = [d.acquirer, d.target, d.title, d.headline, d.subtitle, d.sector, d.deal_type, d.sponsor]
               .concat(advisors(d)).join(" ").toLowerCase();
             if (hay.indexOf(term) === -1) return false;
           }
@@ -292,7 +292,7 @@
     }
     var lead = document.getElementById("lead");
     if (!lead || !deals.length) return;
-    var d = deals[0];
+    var d = deals.filter(function (x) { return x.featured; })[0] || deals[0];
     var stats = keyStats(d);
     lead.innerHTML =
       '<a class="lead-kicker" href="' + esc(d.url) + '">' + esc(d.kicker || d.sector || "Analysis") + "</a>" +
@@ -304,7 +304,7 @@
     if (d.teaser && window.FOGraphics) window.FOGraphics.mini(document.getElementById("lead-mini"), d.teaser);
     var more = document.getElementById("more");
     if (more) {
-      var rest = deals.slice(1, 5);
+      var rest = deals.filter(function (x) { return x !== d; }).slice(0, 4);
       more.innerHTML = rest.length ? rest.map(function (x) {
         return '<article class="story"><a class="story-kicker" href="' + esc(x.url) + '">' + esc(x.kicker || x.sector || "Analysis") + "</a>" +
           '<h3 class="story-title"><a href="' + esc(x.url) + '">' + esc(storyTitle(x)) + "</a></h3>" +
