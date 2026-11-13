@@ -5,6 +5,31 @@ acquirer: "Peoples Bancorp"
 target: "Capital Bancorp"
 subtitle: "An Ohio community bank pays 1.9x tangible book to clear $10 billion in one move, and buys a national credit card business on the way"
 image: "/assets/img/deals/peoples-capital-card.png"
+headline: "Peoples Pays Up to Leap Past the $10 Billion Line"
+kicker: "Banks"
+short: "Peoples / Capital"
+
+teaser:
+  title: "One deal takes Peoples well past $10 billion"
+  subtitle: "Total assets, $ billions"
+  max: 15
+  values:
+    - { label: "Peoples", value: 9.5, display: "$9.5B" }
+    - { label: "Capital", value: 3.9, display: "$3.9B" }
+    - { label: "Combined", value: 14, display: "≈$14B", highlight: true }
+
+glance:
+  - { value: "$728M", label: "Deal value, all in stock" }
+  - { value: "1.91x", label: "Price to Capital's tangible book" }
+  - { value: "22.7%", label: "Premium to Capital's share price" }
+  - { value: "+19%", label: "Peoples' 2027E EPS accretion" }
+  - { value: "−10.8%", label: "Hit to tangible book per share" }
+
+key_points:
+  - "Peoples Bancorp, a $9.5 billion Ohio bank, is buying Capital Bancorp of Maryland for $728 million in stock: 1.9x tangible book and a 23% premium."
+  - "The real reason is the $10 billion line. This gets Peoples to about $14 billion in one step, with fee-heavy national businesses that barely add to the debit-fee cap."
+  - "On paper it works: about 19% EPS accretion and 10.8% tangible book dilution, earned back in under three years."
+  - "But Peoples' stock fell 5%, the savings don't fully arrive until 2028, and Capital's OpenSky card business carries real credit risk."
 
 announced: 2026-09-30
 written: 2026-11-12
@@ -160,7 +185,3 @@ What I can't judge yet is OpenSky. An Ohio community bank is taking on a nationa
 - OpenSky's charge-offs
 - Whether 2027 cost savings arrive on schedule
 - Whether Peoples' share price recovers once investors see the combined results
-
-## 30-Second Version
-
-Peoples Bancorp, a $9.5 billion Ohio bank, is buying Capital Bancorp in Maryland for $728 million in stock. That's 1.9x tangible book and a 23% premium. The real reason is the $10 billion threshold. Peoples was going to cross it anyway, and this gets it to $14 billion in one step, with fee-heavy national businesses that barely add to the debit-fee cap. The math works on paper: about 19% EPS accretion and 10.8% tangible book dilution, earned back in under three years. But the market sent Peoples' stock down 5%, the cost savings don't fully arrive until 2028, and the big unknown is the credit risk in Capital's OpenSky card business. So I'd call it too early to tell, leaning positive.
