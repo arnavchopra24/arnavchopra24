@@ -1,6 +1,6 @@
 /* Fairness Opinion: interactive graphics.
    Each <figure data-graphic> holds its settings as JSON (written from a deal's
-   front matter by _includes/graphic.html). Types: timeline, stub, leverage, dotplot. */
+   front matter by _includes/graphic.html). Types: timeline, stub, leverage, dotplot, offer. */
 (function () {
   "use strict";
 
@@ -395,6 +395,53 @@
     window.addEventListener("resize", debounce(draw, 120));
   }
 
+  // ── Offer: what a cash-and-stock offer is worth at any acquirer share price ──
+
+  function offer(fig, g) {
+    var f = frame(fig, g);
+    var money = function (v) { return "$" + v.toFixed(2); };
+    var cc = col(g.cash_color || "#1f3a5f"), sc = col(g.stock_color || "blue");
+    var items = [{ label: "Cash", color: cc }, { label: g.acquirer + " stock", color: sc }];
+    if (g.compare) items.push({ label: g.compare.legend || g.compare.label, color: COLORS.grey });
+    legend(f.bar, items);
+    var rows = html("div", "", f.body);
+    var max = g.max;
+    function row(name, sub) {
+      var r = html("div", "cmp-row", rows);
+      html("div", "cmp-name", r, esc(name) + (sub ? "<small>" + esc(sub) + "</small>" : ""));
+      return html("div", "cmp-track", r);
+    }
+    var t1 = row(g.offer_label || "The offer", g.offer_sub || "per " + g.target + " share");
+    var sCash = html("span", "cmp-seg first", t1); sCash.style.left = "0"; sCash.style.background = cc; sCash.style.width = (g.cash / max * 100) + "%";
+    var sStock = html("span", "cmp-seg last", t1); sStock.style.background = sc;
+    var vOffer = html("span", "cmp-val", t1);
+    if (g.compare) {
+      var t2 = row(g.compare.label, g.compare.sub);
+      var sCmp = html("span", "cmp-seg last", t2); sCmp.style.left = "0"; sCmp.style.background = COLORS.grey; sCmp.style.width = (g.compare.value / max * 100) + "%";
+      var vCmp = html("span", "cmp-val", t2); vCmp.style.left = (g.compare.value / max * 100) + "%"; vCmp.textContent = money(g.compare.value);
+    }
+    var out = html("div", "readout", f.body);
+    slider(f.controls, g.slider, function (p) {
+      var stock = g.ratio * p, total = g.cash + stock;
+      var w1 = g.cash / max * 100;
+      sStock.style.left = "calc(" + w1 + "% + 2px)";
+      sStock.style.width = "calc(" + (stock / max * 100) + "% - 2px)";
+      vOffer.style.left = Math.min(100, total / max * 100) + "%";
+      vOffer.textContent = money(total);
+      var txt = '<span class="big">' + money(total) + "</span> per " + esc(g.target) + " share: " + money(g.cash) + " in cash plus " + money(stock) + " in " + esc(g.acquirer) + " stock. ";
+      if (g.compare) {
+        var c = g.compare.value;
+        if (g.compare.mode === "premium") {
+          txt += "That is " + Math.round((total / c - 1) * 100) + "% above " + esc(g.compare.phrase || g.compare.label) + " (" + money(c) + ").";
+        } else {
+          var gap = total - c;
+          txt += esc(g.compare.phrase || g.compare.label) + " is " + money(c) + ", " + (gap >= 0 ? money(gap) + " (" + Math.round(gap / total * 100) + "%) below" : money(-gap) + " above") + " the offer.";
+        }
+      }
+      out.innerHTML = txt;
+    }, money).update();
+  }
+
   // ── Mini column chart (home page teasers) ────────────────────
 
   function mini(node, t) {
@@ -420,7 +467,7 @@
   }
   window.FOGraphics = { mini: mini };
 
-  var TYPES = { timeline: timeline, stub: stub, leverage: leverage, dotplot: dotplot };
+  var TYPES = { timeline: timeline, stub: stub, leverage: leverage, dotplot: dotplot, offer: offer };
 
   function init() {
     Array.prototype.forEach.call(document.querySelectorAll("figure[data-graphic]"), function (fig) {
